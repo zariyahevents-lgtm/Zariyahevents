@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zariyah Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: #333;
+      background-color: #fffaf5;
+      line-height: 1.6;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 2rem;
+    }
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #a0522d;
+    }
+    nav ul {list-style: none; display: flex; gap: 1.5rem;}
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {color: #a0522d;}
+
+    /* Hero */
+    .hero {
+      background: url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #3b2b2b;
+      padding: 2rem;
+    }
+    .hero .overlay {
+      background: rgba(255,250,245,0.7);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      max-width: 900px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      margin-bottom: 0.6rem;
+      color: #6b3f2c;
+    }
+    .hero p {font-size: 1.05rem; margin-bottom: 1rem; color: #4a392f;}
+    .hero button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      background: #a0522d;
+      color: white;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover {background: #8b3e20;}
+
+    section {max-width: 1100px; margin: auto; padding: 4rem 2rem;}
+    h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: #a0522d;
+    }
+
+    /* About */
+    .about p {text-align: center; font-size: 1.05rem; max-width: 900px; margin: auto; color:#4b3b33;}
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .service-card:hover {transform: translateY(-5px);}
+    .service-card img {
+      width: 80px;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      background: #fffaf5;
+      padding: 8px;
+    }
+    .service-card h3 {margin-bottom: 0.5rem; color: #444;}
+    .service-card p{color:#5a4942;}
+
+    /* Team - no photos for now */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      align-items: start;
+    }
+    .team-member {
+      text-align: left;
+      padding: 1.2rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      min-height: 110px;
+    }
+    .team-member .placeholder {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #f7e9e1, #fffaf5);
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.75rem;
+      border: 1px dashed rgba(160,82,45,0.2);
+    }
+    .team-member h3 {margin-bottom: 0.25rem; color: #a0522d;}
+    .team-member p {font-size: 0.95rem; color: #555;}
+
+    /* Testimonials */
+    .testimonials {
+      background: #fff3e6;
+      padding: 4rem 2rem;
+      border-radius: 12px;
+    }
+    .testimonial {
+      max-width: 700px;
+      margin: auto;
+      font-style: italic;
+      text-align: center;
+      color:#5b463e;
+    }
+
+    /* Contact */
+    .contact form {
+      max-width: 700px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .contact form .full {grid-column: 1 / -1;}
+    .contact input, .contact textarea, .contact select {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .contact .checkbox-group {display:flex; flex-direction: column; gap:0.5rem; max-height:200px; overflow:auto; padding:0.25rem;}
+    .contact button {
+      background: #a0522d;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .contact button:hover {background: #8b3e20;}
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    footer a {color: #ffddc1; text-decoration: none;}
+
+    @media (max-width:700px){
+      .contact form {grid-template-columns: 1fr;}
+      .hero h1{font-size:1.9rem;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">Zariyah</div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Hero section">
+    <div class="overlay">
+      <h1>Elegant. Thoughtful. Unforgettable.</h1>
+      <p>Zariyah is your partner in creating extraordinary events that celebrate life’s most beautiful moments.</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Start Planning</button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <h2>Who We Are</h2>
+    <p>
+      We’re two creatives who turned our shared passion for creating unforgettable moments into a business built on creativity, connection, and care. With an eye for detail and a heart for design, we founded Zariyah to bring fresh ideas and seamless execution to every event. From weddings and birthdays to corporate gatherings and community celebrations, we believe every event should tell a story that reflects the people behind it. Together, we combine our vision, skills, and dedication to make sure no detail is overlooked and every moment shines. At Zariyah, you’re not just hiring planners—you’re partnering with two women committed to making your celebration stress-free, stylish, and truly memorable.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4727/4727424.png" alt="Birthday icon">
+        <h3>Birthday Parties</h3>
+        <p>Celebrate with style, for both kids & adults.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/5341/5341236.png" alt="Graduation icon">
+        <h3>Graduation</h3>
+        <p>Memorable milestones crafted beautifully.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4727/4727429.png" alt="Weddings icon">
+        <h3>Weddings</h3>
+        <p>From intimate to grand, your day perfected.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/4727/4727440.png" alt="Anniversaries icon">
+        <h3>Anniversaries</h3>
+        <p>Celebrate love with timeless experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="team-member">
+        <div style="display:flex;align-items:center;">
+          <div class="placeholder" aria-hidden="true"></div>
+          <div>
+            <h3>Raman Kaur</h3>
+            <p>CEO & Lead Planner</p>
+          </div>
+        </div>
+        <p style="margin-top:8px;color:#5a4942;"></p>
+      </div>
+      <div class="team-member">
+        <div style="display:flex;align-items:center;">
+          <div class="placeholder" aria-hidden="true"></div>
+          <div>
+            <h3>Kamaldeep Kaur</h3>
+            <p>CFO</p>
+          </div>
+        </div>
+        <p style="margin-top:8px;color:#5a4942;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <h2>What Clients Say</h2>
+    <p class="testimonial">“Zariyah made my celebration feel like a dream come true. Every detail was perfect.” – Happy Client</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form action="mailto:zariyahevents@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm();">
+      <label for="first_name">First Name</label>
+      <input type="text" id="first_name" name="first_name" placeholder="First Name" required>
+
+      <label for="last_name">Last Name</label>
+      <input type="text" id="last_name" name="last_name" placeholder="Last Name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+
+      <label for="phone">Phone</label>
+      <input type="tel" id="phone" name="phone" placeholder="Phone" pattern="[0-9+() -]{7,}" title="Enter phone number" required>
+
+      <label for="event_date">Event Date</label>
+      <input type="date" id="event_date" name="event_date" required>
+
+      <label for="event_type">Type of Event</label>
+      <select id="event_type" name="event_type" required>
+        <option value="">Select event type</option>
+        <option>Wedding</option>
+        <option>Birthday</option>
+        <option>Graduation</option>
+        <option>Anniversary</option>
+        <option>Corporate</option>
+        <option>Community</option>
+        <option>Other</option>
+      </select>
+
+      <fieldset class="full">
+        <legend>What services are you interested in?</legend>
+        <div class="checkbox-group">
+          <label for="full_planning"><input type="checkbox" id="full_planning" name="services" value="Full planning"> Full planning</label>
+          <label for="partial_planning"><input type="checkbox" id="partial_planning" name="services" value="Partial planning"> Partial planning</label>
+          <label for="design_styling"><input type="checkbox" id="design_styling" name="services" value="Design & Styling"> Design & Styling</label>
+          <label for="day_of_coord"><input type="checkbox" id="day_of_coord" name="services" value="Day-of coordination"> Day-of coordination</label>
+          <label for="vendor_sourcing"><input type="checkbox" id="vendor_sourcing" name="services" value="Vendor sourcing"> Vendor sourcing</label>
+          <label for="consultation"><input type="checkbox" id="consultation" name="services" value="Consultation"> Consultation</label>
+        </div>
+      </fieldset>
+
+      <label for="message" class="full">Tell us more about your event</label>
+      <textarea id="message" name="message" rows="5" placeholder="Tell us more about your event..." class="full"></textarea>
+
+      <div class="full" style="text-align:center;">
+        <button type="submit">Send Message</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Zariyah Events | Based in Chicago, Available Worldwide</p>
+  </footer>
+
+  <script>
+    // set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // small validation for mailto forms
+    function validateForm(){
+      const date = document.getElementById('event_date').value;
+      const type = document.getElementById('event_type').value;
+      if(!date || !type){
+        alert('Please choose an event date and type of event.');
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>
